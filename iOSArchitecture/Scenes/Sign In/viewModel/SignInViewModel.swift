@@ -29,7 +29,6 @@ class SignInViewModel {
             return
         }
         
-        print("Signing in begins...")
         isAuthorised = true
     }
 }
