@@ -11,12 +11,18 @@ import Combine
 
 class SearchViewController: UIViewController {
 
-    // MARK: - View Model
+    // MARK: - Subscriptions
 
-    private var viewModel: SearchSongViewModel!
     private var subscriptions = Set<AnyCancellable>()
 
+    // MARK: - Dependencies
+
+    private var viewModel: SearchSongViewModel!
     private var playerViewController = AVPlayerViewController ()
+
+    // MARK: - Constants
+
+    private let rowHeight: CGFloat = 70.0
 
     // MARK: - Properties
 
@@ -46,6 +52,15 @@ class SearchViewController: UIViewController {
         return searchController
     }()
 
+    private lazy var logoutBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem()
+        barButton.title = "Logout"
+        barButton.tintColor = #colorLiteral(red: 0.1137254902, green: 0.7254901961, blue: 0.3294117647, alpha: 1)
+        barButton.target = self.viewModel
+        barButton.action = #selector(self.viewModel.logout)
+        return barButton
+    }()
+
     // MARK: - Initializer
 
     convenience init(viewModel: SearchSongViewModel) {
@@ -57,10 +72,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Welcome!"
-        navigationItem.searchController = searchController
+        
+        layoutNavigationItems()
         view.addSubview(tableView)
-
         tableView.register(SongCell.self,
                            forCellReuseIdentifier: SongCell.reuseIdentifier)
 
@@ -80,6 +94,15 @@ class SearchViewController: UIViewController {
         tableView.frame = view.bounds
     }
 
+    // MARK: - Navigation Items
+
+    private func layoutNavigationItems() {
+        navigationItem.title = "Welcome!"
+        navigationItem.searchController = searchController
+        navigationItem.rightBarButtonItem = logoutBarButton
+    }
+
+
     // MARK: - Play Song
 
     private func playDownload(_ song: Song) {
@@ -98,7 +121,7 @@ extension SearchViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return rowHeight
     }
 
     func tableView(

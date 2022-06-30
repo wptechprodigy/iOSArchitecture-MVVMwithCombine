@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import UIKit
 
 class SearchSongViewModel {
 
@@ -45,5 +46,11 @@ class SearchSongViewModel {
 
     private func updateSongResult(_ songResults: [Song]) {
         self.songResults = songResults
+    }
+
+    // MARK: - Logout
+
+    @objc func logout() {
+        
     }
 }
