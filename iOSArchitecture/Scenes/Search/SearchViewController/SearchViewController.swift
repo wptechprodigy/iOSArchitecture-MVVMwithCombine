@@ -105,8 +105,6 @@ class SearchViewController: UIViewController {
     // MARK: - Logout
 
     @objc func logout() {
-        let appNav = AppDependencyContainer().makeInitialIntialAppScene()
-        appNav.modalPresentationStyle = .fullScreen
         dismiss(animated: true) { [weak self] in
             let appNav = AppDependencyContainer().makeInitialIntialAppScene()
             appNav.modalPresentationStyle = .fullScreen
