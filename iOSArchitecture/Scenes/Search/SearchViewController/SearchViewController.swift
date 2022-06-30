@@ -56,8 +56,8 @@ class SearchViewController: UIViewController {
         let barButton = UIBarButtonItem()
         barButton.title = "Logout"
         barButton.tintColor = #colorLiteral(red: 0.1137254902, green: 0.7254901961, blue: 0.3294117647, alpha: 1)
-        barButton.target = self.viewModel
-        barButton.action = #selector(self.viewModel.logout)
+        barButton.target = self
+        barButton.action = #selector(self.logout)
         return barButton
     }()
 
@@ -100,6 +100,18 @@ class SearchViewController: UIViewController {
         navigationItem.title = "Welcome!"
         navigationItem.searchController = searchController
         navigationItem.rightBarButtonItem = logoutBarButton
+    }
+
+    // MARK: - Logout
+
+    @objc func logout() {
+        let appNav = AppDependencyContainer().makeInitialIntialAppScene()
+        appNav.modalPresentationStyle = .fullScreen
+        dismiss(animated: true) { [weak self] in
+            let appNav = AppDependencyContainer().makeInitialIntialAppScene()
+            appNav.modalPresentationStyle = .fullScreen
+            self?.present(appNav, animated: true)
+        }
     }
 
 

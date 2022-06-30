@@ -51,6 +51,6 @@ class SearchSongViewModel {
     // MARK: - Logout
 
     @objc func logout() {
-        
+        // TODO: - Keep note of user logging out
     }
 }
