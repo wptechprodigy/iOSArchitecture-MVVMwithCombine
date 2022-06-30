@@ -34,6 +34,8 @@ final class AppDependencyContainer {
         return navigationController
     }
 
+    // MARK: - Intial Scene
+    
     func makeInitialIntialAppScene() -> SignInViewController {
         let searchViewController = searchDependencyContainer.makeSearchViewController()
         let navigationController = makeNavigationController(searchViewController)
