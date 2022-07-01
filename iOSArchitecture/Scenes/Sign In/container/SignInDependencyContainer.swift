@@ -17,7 +17,7 @@ final class SignInDependencyContainer {
 
     // MARK: - Final Object
 
-    func makeSignInViewController(_ childViewController: UINavigationController) -> SignInViewController {
+    func makeSignInViewController(_ childViewController: UITabBarController) -> SignInViewController {
         let signInViewModel = SignInViewModel()
         return SignInViewController(viewModel: signInViewModel, childViewController: childViewController)
     }

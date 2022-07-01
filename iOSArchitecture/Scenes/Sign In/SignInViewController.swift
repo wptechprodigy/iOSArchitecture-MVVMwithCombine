@@ -21,7 +21,7 @@ class SignInViewController: NiblessViewController {
     // MARK: - Dependencies
 
     private var viewModel: SignInViewModel
-    private let childViewController: UINavigationController
+    private let childViewController: UITabBarController
 
     // MARK: - Subscriptions
 
@@ -29,7 +29,7 @@ class SignInViewController: NiblessViewController {
 
     // MARK: - Initializer
 
-    init(viewModel: SignInViewModel, childViewController: UINavigationController) {
+    init(viewModel: SignInViewModel, childViewController: UITabBarController) {
         self.viewModel = viewModel
         self.childViewController = childViewController
         super.init()

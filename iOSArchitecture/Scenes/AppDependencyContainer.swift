@@ -34,11 +34,41 @@ final class AppDependencyContainer {
         return navigationController
     }
 
-    // MARK: - Intial Scene
-    
-    func makeInitialIntialAppScene() -> SignInViewController {
+    private func makeSearchFlow() -> UINavigationController {
         let searchViewController = searchDependencyContainer.makeSearchViewController()
         let navigationController = makeNavigationController(searchViewController)
-        return signInDependencyContainer.makeSignInViewController(navigationController)
+        navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+
+        return navigationController
+    }
+
+    private func makeFavoriteFlow() -> UINavigationController {
+        let favoriteViewController = FavoriteViewController()
+        favoriteViewController.tabBarItem = UITabBarItem(
+            tabBarSystemItem: .favorites, tag: 2)
+        let favoriteFlow = UINavigationController(rootViewController: favoriteViewController)
+        
+        return favoriteFlow
+    }
+
+    private func makeHomeScene() -> UITabBarController {
+
+        let searchFlow = makeSearchFlow()
+        let favoriteFlow = makeFavoriteFlow()
+
+        let homeViewController = UITabBarController()
+        homeViewController.modalPresentationStyle = .fullScreen
+        homeViewController.modalTransitionStyle = .crossDissolve
+        homeViewController.viewControllers = [searchFlow, favoriteFlow]
+        
+        return homeViewController
+    }
+
+    // MARK: - Intial Scene
+    
+    func makeSignInFlow() -> SignInViewController {
+        let homeScene = makeHomeScene()
+        let signInViewController = signInDependencyContainer.makeSignInViewController(homeScene)
+        return signInViewController
     }
 }
