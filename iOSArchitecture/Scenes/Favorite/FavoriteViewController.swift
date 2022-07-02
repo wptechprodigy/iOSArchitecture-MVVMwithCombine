@@ -6,14 +6,31 @@
 //
 
 import UIKit
+import Combine
 
 class FavoriteViewController: UITableViewController {
+
+    // MARK: - Subscriptions
+
+    private var subscriptions = Set<AnyCancellable>()
+
+    // MARK: - Dependencies
+
+    private var viewModel: FavoriteSongViewModel!
+
+    // MARK: - Initializer
+
+    convenience init(viewModel: FavoriteSongViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        viewModel.start()
     }
 
     // MARK: - Navigation

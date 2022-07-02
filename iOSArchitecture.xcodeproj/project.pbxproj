@@ -27,6 +27,9 @@
 		048D2EDA286DCED90072A0C4 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D2ED9286DCED90072A0C4 /* AppDependencyContainer.swift */; };
 		049A7F54286E659200D66CE2 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F53286E659200D66CE2 /* FavoriteViewController.swift */; };
 		049A7F56286E688600D66CE2 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F55286E688600D66CE2 /* FavoriteCell.swift */; };
+		049A7F5D286F6ADD00D66CE2 /* FavoriteSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F5C286F6ADC00D66CE2 /* FavoriteSongViewModel.swift */; };
+		049A7F5F286F6CCC00D66CE2 /* FavoriteSongRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F5E286F6CCC00D66CE2 /* FavoriteSongRepository.swift */; };
+		049A7F61286F6E6C00D66CE2 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F60286F6E6C00D66CE2 /* FavoriteRepository.swift */; };
 		350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A882863BEDD00970C8B /* AppDelegate.swift */; };
 		350E1A8B2863BEDD00970C8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */; };
 		350E1A922863BEE200970C8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350E1A912863BEE200970C8B /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 		048D2ED9286DCED90072A0C4 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		049A7F53286E659200D66CE2 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		049A7F55286E688600D66CE2 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		049A7F5C286F6ADC00D66CE2 /* FavoriteSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongViewModel.swift; sourceTree = "<group>"; };
+		049A7F5E286F6CCC00D66CE2 /* FavoriteSongRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongRepository.swift; sourceTree = "<group>"; };
+		049A7F60286F6E6C00D66CE2 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		350E1A852863BEDD00970C8B /* iOSArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		350E1A882863BEDD00970C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 		049A7F59286E6B5E00D66CE2 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				049A7F5E286F6CCC00D66CE2 /* FavoriteSongRepository.swift */,
+				049A7F60286F6E6C00D66CE2 /* FavoriteRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -204,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				049A7F59286E6B5E00D66CE2 /* repository */,
+				049A7F5C286F6ADC00D66CE2 /* FavoriteSongViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -404,6 +413,7 @@
 				048D2ED2286DAE1F0072A0C4 /* SignInViewModel.swift in Sources */,
 				350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */,
 				048D2EB5286C52140072A0C4 /* MusicNetworkManager.swift in Sources */,
+				049A7F5D286F6ADD00D66CE2 /* FavoriteSongViewModel.swift in Sources */,
 				350E1AA82863C03300970C8B /* SearchViewController.swift in Sources */,
 				048D2EC9286D7A230072A0C4 /* SignInRootView.swift in Sources */,
 				048D2ED5286DC8630072A0C4 /* SignInDependencyContainer.swift in Sources */,
@@ -415,7 +425,9 @@
 				048D2EAF286BE05A0072A0C4 /* RequestProtocol.swift in Sources */,
 				048D2EBB286C72080072A0C4 /* SearchRepository.swift in Sources */,
 				048D2EC0286C79C70072A0C4 /* SearchSongViewModel.swift in Sources */,
+				049A7F61286F6E6C00D66CE2 /* FavoriteRepository.swift in Sources */,
 				048D2EB8286C6C6E0072A0C4 /* MusicSearchRequest.swift in Sources */,
+				049A7F5F286F6CCC00D66CE2 /* FavoriteSongRepository.swift in Sources */,
 				048D2EB3286C503B0072A0C4 /* APIManagerProtocol.swift in Sources */,
 				048D2EC6286CC43C0072A0C4 /* SongCell.swift in Sources */,
 				049A7F54286E659200D66CE2 /* FavoriteViewController.swift in Sources */,
