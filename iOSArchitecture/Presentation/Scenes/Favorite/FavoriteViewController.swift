@@ -18,6 +18,10 @@ class FavoriteViewController: UITableViewController {
 
     private var viewModel: FavoriteSongViewModel!
 
+    // MARK: - Constants
+
+    private let rowHeight: CGFloat = 80.0
+
     // MARK: - Initializer
 
     convenience init(viewModel: FavoriteSongViewModel) {
@@ -30,7 +34,24 @@ class FavoriteViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        viewModel.start()
+        tableView.register(FavoriteCell.self,
+                           forCellReuseIdentifier: FavoriteCell.reuseIdentifier)
+        reloadTable()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadTable()
+    }
+
+    private func reloadTable() {
+        viewModel
+            .$songResults
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
 
     // MARK: - Navigation
@@ -46,20 +67,30 @@ class FavoriteViewController: UITableViewController {
     // MARK: - Datasource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.songResults.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let subtitleCell = tableView.dequeueReusableCell(withIdentifier: "subtitleCell") else {
-            return UITableViewCell(style: .subtitle, reuseIdentifier: "subtitleCell")
-        }
-        return subtitleCell
+        return tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseIdentifier, for: indexPath)
     }
 
     // MARK: - Delegates
+
+    override func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return rowHeight
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.textLabel?.text = "Row \(indexPath.row)"
-        cell.detailTextLabel?.text = "Lorem ipsum dolor sit amet"
+        guard let cell = cell as? FavoriteCell else {
+            print("Error trying to display a custom cell")
+            return
+        }
+        let favoriteSong = viewModel.songResults[indexPath.row]
+        cell.configureCell(with: favoriteSong)
     }
 }

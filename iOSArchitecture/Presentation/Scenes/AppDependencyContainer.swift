@@ -13,12 +13,14 @@ final class AppDependencyContainer {
 
     let signInDependencyContainer: SignInDependencyContainer
     let searchDependencyContainer: SearchDependencyContainer
+    let favoriteDependencyContainer: FavoriteSongsDependencyContainer
 
     // MARK: - Initializer
 
     init() {
         self.signInDependencyContainer = SignInDependencyContainer()
         self.searchDependencyContainer = SearchDependencyContainer()
+        self.favoriteDependencyContainer = FavoriteSongsDependencyContainer()
     }
 
     // MARK: - Navigation
@@ -43,7 +45,7 @@ final class AppDependencyContainer {
     }
 
     private func makeFavoriteFlow() -> UINavigationController {
-        let favoriteViewController = FavoriteViewController()
+        let favoriteViewController = favoriteDependencyContainer.makeFavoriteSongsController()
         favoriteViewController.tabBarItem = UITabBarItem(
             tabBarSystemItem: .favorites, tag: 2)
         let favoriteFlow = UINavigationController(rootViewController: favoriteViewController)

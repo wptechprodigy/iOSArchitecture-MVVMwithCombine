@@ -17,7 +17,6 @@ class FavoriteSongViewModel {
 
     // MARK: - Properties
 
-    @Published public var songID: Int = 0
     @Published public var message: String = ""
     @Published public private(set) var songResults: [Song] = []
 
@@ -25,31 +24,35 @@ class FavoriteSongViewModel {
 
     init(favoriteSongRepository: FavoriteSongRepository) {
         self.favoriteSongRepository = favoriteSongRepository
+        favoriteSongRepository.loadAllSong()
+
+        favoriteSongRepository
+            .$favoriteSongs
+            .map { Set($0) }
+            .map { Array($0) }
+            .map(sort)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] songs in
+                self?.songResults = songs
+            }
+            .store(in: &subscriptions)
     }
 
-    // MARK: - Start
-
-    func start() {
-        $songID
-            .sink(receiveValue: add(_:))
-            .store(in: &subscriptions)
+    private func sort(_ songResults: [Song]) -> [Song] {
+        return songResults.sorted(by: {
+            $0.name < $1.name
+        })
     }
 
     // MARK: - Add
 
-    private func add(_ songID: Int) {
-        // TODO: - Add song to data storage
-    }
-
-    // MARK: - Load
-
-    func loadFavoriteSongs() {
-        // TODO: - Load all song from data storage
+    func add(_ song: Song) {
+        try? favoriteSongRepository.add(song: song)
     }
 
     // MARK: - Delete
 
-    func delete(_ songID: Int) {
-        // TODO: - Delete song using ID
+    func delete(_ song: Song) {
+        try? favoriteSongRepository.delete(song: song)
     }
 }
