@@ -145,6 +145,13 @@ extension SearchViewController: UITableViewDelegate {
         }
         let song = viewModel.songResults[indexPath.row]
         songCell.configureUI(with: song)
+        songCell.didTapMoreButton = { [weak self] song in
+            let alert = UIAlertController.presentOptions(song) { [weak self] song in
+                self?.addToFavorites(song)
+            }
+
+            self?.present(alert, animated: true)
+        }
     }
 
     func tableView(
@@ -152,8 +159,14 @@ extension SearchViewController: UITableViewDelegate {
         didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
             let song = viewModel.songResults[indexPath.row]
+            
             playDownload(song)
         }
+
+    private func addToFavorites(_ song: Song) {
+        let favoriteViewModel: FavoriteSongViewModel = FavoriteSongsDependencyContainer().makeFavoriteSongViewModel()
+        favoriteViewModel.add(song)
+    }
 }
 
 // MARK: - TableView DataSource

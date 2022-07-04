@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class SongCell: UITableViewCell {
 
@@ -14,6 +15,13 @@ final class SongCell: UITableViewCell {
     static var reuseIdentifier: String {
         return String(describing: self)
     }
+
+    // MARK: - Subscriptions
+
+    private var subscriptions = Set<AnyCancellable>()
+
+    var didTapMoreButton: ((Song) -> Void)?
+    private var song: Song?
 
     // MARK: - UI Elements
     
@@ -45,11 +53,12 @@ final class SongCell: UITableViewCell {
         return imageView
     }()
     
-    private let moreButton: UIButton = {
+    private lazy var moreButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "ellipsis")
         button.setImage(image, for: .normal)
         button.tintColor = .secondaryLabel
+        button.addTarget(self, action: #selector(moreButtonDidTap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -63,6 +72,14 @@ final class SongCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - More Action
+
+    @objc func moreButtonDidTap(_ sender: UIButton) {
+        if let song = song {
+            didTapMoreButton?(song)
+        }
     }
 
     // MARK: - Setup
@@ -93,6 +110,7 @@ final class SongCell: UITableViewCell {
     // MARK: - Configuration
     
     func configureUI(with song: Song) {
+        self.song = song
         nameLabel.text = song.name
         artistLabel.text = song.artist
     }

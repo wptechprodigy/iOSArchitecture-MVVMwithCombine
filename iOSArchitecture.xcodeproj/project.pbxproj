@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,15 @@
 		048D2EDA286DCED90072A0C4 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D2ED9286DCED90072A0C4 /* AppDependencyContainer.swift */; };
 		049A7F54286E659200D66CE2 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F53286E659200D66CE2 /* FavoriteViewController.swift */; };
 		049A7F56286E688600D66CE2 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F55286E688600D66CE2 /* FavoriteCell.swift */; };
+		049A7F5D286F6ADD00D66CE2 /* FavoriteSongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F5C286F6ADC00D66CE2 /* FavoriteSongViewModel.swift */; };
+		049A7F5F286F6CCC00D66CE2 /* FavoriteSongRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F5E286F6CCC00D66CE2 /* FavoriteSongRepository.swift */; };
+		049A7F61286F6E6C00D66CE2 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F60286F6E6C00D66CE2 /* FavoriteRepository.swift */; };
+		049A7F642870578700D66CE2 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 049A7F632870578700D66CE2 /* Realm */; };
+		049A7F662870578700D66CE2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 049A7F652870578700D66CE2 /* RealmSwift */; };
+		049A7F69287093F800D66CE2 /* StorableSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F68287093F800D66CE2 /* StorableSong.swift */; };
+		049A7F6B2870D00400D66CE2 /* FavoriteSongsDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F6A2870D00300D66CE2 /* FavoriteSongsDependencyContainer.swift */; };
+		049A7F6D2871B50900D66CE2 /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F6C2871B50900D66CE2 /* UIControl+Combine.swift */; };
+		049A7F7228730D5400D66CE2 /* UIAlertController+AddToFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F7128730D5400D66CE2 /* UIAlertController+AddToFavorite.swift */; };
 		350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A882863BEDD00970C8B /* AppDelegate.swift */; };
 		350E1A8B2863BEDD00970C8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */; };
 		350E1A922863BEE200970C8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350E1A912863BEE200970C8B /* Assets.xcassets */; };
@@ -56,6 +65,13 @@
 		048D2ED9286DCED90072A0C4 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		049A7F53286E659200D66CE2 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		049A7F55286E688600D66CE2 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		049A7F5C286F6ADC00D66CE2 /* FavoriteSongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongViewModel.swift; sourceTree = "<group>"; };
+		049A7F5E286F6CCC00D66CE2 /* FavoriteSongRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongRepository.swift; sourceTree = "<group>"; };
+		049A7F60286F6E6C00D66CE2 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
+		049A7F68287093F800D66CE2 /* StorableSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableSong.swift; sourceTree = "<group>"; };
+		049A7F6A2870D00300D66CE2 /* FavoriteSongsDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSongsDependencyContainer.swift; sourceTree = "<group>"; };
+		049A7F6C2871B50900D66CE2 /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
+		049A7F7128730D5400D66CE2 /* UIAlertController+AddToFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AddToFavorite.swift"; sourceTree = "<group>"; };
 		350E1A852863BEDD00970C8B /* iOSArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		350E1A882863BEDD00970C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049A7F662870578700D66CE2 /* RealmSwift in Frameworks */,
+				049A7F642870578700D66CE2 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				048D2ECE286D9FA80072A0C4 /* UIViewController+HideKeyboard.swift */,
+				049A7F6C2871B50900D66CE2 /* UIControl+Combine.swift */,
+				049A7F7128730D5400D66CE2 /* UIAlertController+AddToFavorite.swift */,
 			);
 			path = "UIKit Extensions";
 			sourceTree = "<group>";
@@ -177,6 +197,7 @@
 		049A7F4F286E5FF300D66CE2 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				049A7F67287093BE00D66CE2 /* persistence */,
 				049A7F5B286E6B9500D66CE2 /* container */,
 				049A7F5A286E6B8800D66CE2 /* viewModel */,
 				049A7F50286E602900D66CE2 /* view */,
@@ -196,6 +217,8 @@
 		049A7F59286E6B5E00D66CE2 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				049A7F5E286F6CCC00D66CE2 /* FavoriteSongRepository.swift */,
+				049A7F60286F6E6C00D66CE2 /* FavoriteRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -204,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				049A7F59286E6B5E00D66CE2 /* repository */,
+				049A7F5C286F6ADC00D66CE2 /* FavoriteSongViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -211,8 +235,28 @@
 		049A7F5B286E6B9500D66CE2 /* container */ = {
 			isa = PBXGroup;
 			children = (
+				049A7F6A2870D00300D66CE2 /* FavoriteSongsDependencyContainer.swift */,
 			);
 			path = container;
+			sourceTree = "<group>";
+		};
+		049A7F67287093BE00D66CE2 /* persistence */ = {
+			isa = PBXGroup;
+			children = (
+				049A7F68287093F800D66CE2 /* StorableSong.swift */,
+			);
+			path = persistence;
+			sourceTree = "<group>";
+		};
+		049A7F6E2871FA0800D66CE2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				049A7F4F286E5FF300D66CE2 /* Favorite */,
+				048D2EC7286CD0DF0072A0C4 /* Sign In */,
+				350E1AA52863C01700970C8B /* Search */,
+				048D2ED9286DCED90072A0C4 /* AppDependencyContainer.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		350E1A7C2863BEDD00970C8B = {
@@ -234,11 +278,8 @@
 		350E1A872863BEDD00970C8B /* iOSArchitecture */ = {
 			isa = PBXGroup;
 			children = (
-				048D2EC1286CB97D0072A0C4 /* NiblessView.swift */,
-				048D2EC2286CB97D0072A0C4 /* NiblessViewController.swift */,
 				350E1A9E2863BF8000970C8B /* Core */,
-				350E1AA42863C01000970C8B /* Scenes */,
-				350E1A9D2863BF0B00970C8B /* Resources */,
+				350E1AA42863C01000970C8B /* Presentation */,
 				350E1A962863BEE200970C8B /* Info.plist */,
 				350E1A9C2863BEF900970C8B /* Supporting Files */,
 			);
@@ -296,16 +337,16 @@
 			path = song;
 			sourceTree = "<group>";
 		};
-		350E1AA42863C01000970C8B /* Scenes */ = {
+		350E1AA42863C01000970C8B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				048D2EC1286CB97D0072A0C4 /* NiblessView.swift */,
+				048D2EC2286CB97D0072A0C4 /* NiblessViewController.swift */,
 				048D2ECD286D9F2D0072A0C4 /* UIKit Extensions */,
-				049A7F4F286E5FF300D66CE2 /* Favorite */,
-				048D2EC7286CD0DF0072A0C4 /* Sign In */,
-				350E1AA52863C01700970C8B /* Search */,
-				048D2ED9286DCED90072A0C4 /* AppDependencyContainer.swift */,
+				350E1A9D2863BF0B00970C8B /* Resources */,
+				049A7F6E2871FA0800D66CE2 /* Scenes */,
 			);
-			path = Scenes;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		350E1AA52863C01700970C8B /* Search */ = {
@@ -343,6 +384,10 @@
 			dependencies = (
 			);
 			name = iOSArchitecture;
+			packageProductDependencies = (
+				049A7F632870578700D66CE2 /* Realm */,
+				049A7F652870578700D66CE2 /* RealmSwift */,
+			);
 			productName = iOSArchitecture;
 			productReference = 350E1A852863BEDD00970C8B /* iOSArchitecture.app */;
 			productType = "com.apple.product-type.application";
@@ -370,6 +415,9 @@
 				Base,
 			);
 			mainGroup = 350E1A7C2863BEDD00970C8B;
+			packageReferences = (
+				049A7F622870578700D66CE2 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 350E1A862863BEDD00970C8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -404,9 +452,14 @@
 				048D2ED2286DAE1F0072A0C4 /* SignInViewModel.swift in Sources */,
 				350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */,
 				048D2EB5286C52140072A0C4 /* MusicNetworkManager.swift in Sources */,
+				049A7F6B2870D00400D66CE2 /* FavoriteSongsDependencyContainer.swift in Sources */,
+				049A7F69287093F800D66CE2 /* StorableSong.swift in Sources */,
+				049A7F5D286F6ADD00D66CE2 /* FavoriteSongViewModel.swift in Sources */,
 				350E1AA82863C03300970C8B /* SearchViewController.swift in Sources */,
 				048D2EC9286D7A230072A0C4 /* SignInRootView.swift in Sources */,
+				049A7F6D2871B50900D66CE2 /* UIControl+Combine.swift in Sources */,
 				048D2ED5286DC8630072A0C4 /* SignInDependencyContainer.swift in Sources */,
+				049A7F7228730D5400D66CE2 /* UIAlertController+AddToFavorite.swift in Sources */,
 				048D2ECC286D96B40072A0C4 /* SignInViewController.swift in Sources */,
 				048D2ED8286DC87F0072A0C4 /* SearchDependencyContainer.swift in Sources */,
 				048D2EB1286BE2430072A0C4 /* NetworkError.swift in Sources */,
@@ -415,7 +468,9 @@
 				048D2EAF286BE05A0072A0C4 /* RequestProtocol.swift in Sources */,
 				048D2EBB286C72080072A0C4 /* SearchRepository.swift in Sources */,
 				048D2EC0286C79C70072A0C4 /* SearchSongViewModel.swift in Sources */,
+				049A7F61286F6E6C00D66CE2 /* FavoriteRepository.swift in Sources */,
 				048D2EB8286C6C6E0072A0C4 /* MusicSearchRequest.swift in Sources */,
+				049A7F5F286F6CCC00D66CE2 /* FavoriteSongRepository.swift in Sources */,
 				048D2EB3286C503B0072A0C4 /* APIManagerProtocol.swift in Sources */,
 				048D2EC6286CC43C0072A0C4 /* SongCell.swift in Sources */,
 				049A7F54286E659200D66CE2 /* FavoriteViewController.swift in Sources */,
@@ -613,6 +668,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		049A7F622870578700D66CE2 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		049A7F632870578700D66CE2 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 049A7F622870578700D66CE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		049A7F652870578700D66CE2 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 049A7F622870578700D66CE2 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 350E1A7D2863BEDD00970C8B /* Project object */;
 }

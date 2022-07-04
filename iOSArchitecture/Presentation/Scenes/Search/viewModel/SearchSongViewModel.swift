@@ -47,10 +47,4 @@ class SearchSongViewModel {
     private func updateSongResult(_ songResults: [Song]) {
         self.songResults = songResults
     }
-
-    // MARK: - Logout
-
-    @objc func logout() {
-        // TODO: - Keep note of user logging out
-    }
 }
