@@ -1,7 +1,15 @@
 # iOSArchitecture-MVVMwithCombine
 Mini Spotify - examining MVVM architecture using the Combine Framework and the Repository pattern.
 
-Thank you for participating in the iOS Architecture Bootcamp!
+## My Solution
+
+I have completed 3 out of the 4 deliverables.
+
+I am working on the fourth deliverable at the point of wtiting this part of the README,
+and will update it when I complete the the last deliverable before deadline.
+
+Thank you.
+
 
 This README file contains the instructions to complete the challenge for the iOS Architecture Bootcamp.
 
