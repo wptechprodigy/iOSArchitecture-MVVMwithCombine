@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import AVKit
 
 class FavoriteViewController: UITableViewController {
 
@@ -17,6 +18,7 @@ class FavoriteViewController: UITableViewController {
     // MARK: - Dependencies
 
     private var viewModel: FavoriteSongViewModel!
+    private var playerViewController = AVPlayerViewController ()
 
     // MARK: - Constants
 
@@ -83,8 +85,10 @@ class FavoriteViewController: UITableViewController {
             self?.navigationController?.popToRootViewController(animated: true)
         }
     }
+}
 
     // MARK: - Datasource
+extension FavoriteViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.songResults.count
@@ -93,8 +97,11 @@ class FavoriteViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseIdentifier, for: indexPath)
     }
+}
 
     // MARK: - Delegates
+
+extension FavoriteViewController {
 
     override func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -103,6 +110,20 @@ class FavoriteViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let song = viewModel.songResults[indexPath.row]
+
+        playDownload(song)
+    }
+
+    // MARK: - Play Song
+
+    private func playDownload(_ song: Song) {
+        present(playerViewController, animated: true) { [weak playerViewController] in
+            if let url = URL(string: song.previewUrl) {
+                playerViewController?.player = AVPlayer(url: url)
+                playerViewController?.player?.play()
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
