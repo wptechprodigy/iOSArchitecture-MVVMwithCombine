@@ -26,9 +26,31 @@ final class SearchDependencyContainer {
             musicNetworkManager: musicNetworkManager)
     }
 
+    private func makeLookUpAlbumNetworkManager() -> LookUpAlbumNetworkManager {
+        return LookUpAlbumNetworkManager()
+    }
+
+    private func makeLookUpAlbumRequest() -> LookUpAlbumRequest {
+        return LookUpAlbumRequest()
+    }
+
+    private func makeLookUpAlbumRepository() -> LookUpAlbumRepository {
+        let lookUpAlbumRequest = makeLookUpAlbumRequest()
+        let lookUpAlbumNetworkManager = makeLookUpAlbumNetworkManager()
+
+        return LookUpAlbumRepository(
+            lookUpAlbumRequest: lookUpAlbumRequest,
+            lookUpAlbumNetworkManager: lookUpAlbumNetworkManager)
+    }
+
+
+
     private func makeSearchSongViewModel() -> SearchSongViewModel {
         let musicSearchRepository = makeMusicSearchRepository()
-        return SearchSongViewModel(musicSearchRepository: musicSearchRepository)
+        let lookUpAlbumRepository = makeLookUpAlbumRepository()
+        
+        return SearchSongViewModel(musicSearchRepository: musicSearchRepository,
+                                   lookUpAlbumRepository: lookUpAlbumRepository)
     }
 
     // MARK: - Final Object
