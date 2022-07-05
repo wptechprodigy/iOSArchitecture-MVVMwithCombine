@@ -50,7 +50,7 @@ final class FavoriteSongRepository: FavoriteRepository {
 
     func delete(song: Song) throws {
         try realm.write {
-            let predicate = NSPredicate(format: "uuid == %@", song.toStorable().uuid)
+            let predicate = NSPredicate(format: "name == %@", song.toStorable().name)
             if let productToDelete = realm.objects(StorableSong.self)
                 .filter(predicate).first {
                 realm.delete(productToDelete)

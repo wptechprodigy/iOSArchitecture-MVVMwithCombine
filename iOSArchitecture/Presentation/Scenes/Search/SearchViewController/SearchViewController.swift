@@ -110,7 +110,6 @@ class SearchViewController: UIViewController {
         }
     }
 
-
     // MARK: - Play Song
 
     private func playDownload(_ song: Song) {
