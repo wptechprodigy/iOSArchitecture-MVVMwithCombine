@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol LookUpRepository {
-    func lookup(_ album: String) -> AnyPublisher<AlbumList, Error>
+    func lookup(_ album: Int) -> AnyPublisher<AlbumList, Error>
 }

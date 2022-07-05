@@ -24,7 +24,7 @@ class LookUpAlbumRepository: LookUpRepository {
 
     // MARK: - Search
 
-    func lookup(_ album: String) -> AnyPublisher<AlbumList, Error> {
+    func lookup(_ album: Int) -> AnyPublisher<AlbumList, Error> {
         lookUpAlbumRequest.artistID = album
         let request = try! lookUpAlbumRequest.createURLRequest()
         return lookUpAlbumNetworkManager.lookup(request)

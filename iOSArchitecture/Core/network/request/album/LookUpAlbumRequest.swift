@@ -11,11 +11,11 @@ class LookUpAlbumRequest: RequestProtocol {
 
     // MARK: - Properties
 
-    var artistID: String
+    var artistID: Int
     var path: String {
         return "/lookup"
     }
-    var parameters: [String : String] {
+    var parameters: [String : Any] {
         return [
             "id": artistID,
             "entity": "album"
@@ -24,7 +24,7 @@ class LookUpAlbumRequest: RequestProtocol {
 
     // MARK: - Initializer
 
-    init(artistID: String = "") {
+    init(artistID: Int = 0) {
         self.artistID = artistID
     }
 }
