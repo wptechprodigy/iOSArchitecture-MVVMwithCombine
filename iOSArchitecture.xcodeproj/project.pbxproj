@@ -37,6 +37,7 @@
 		049A7F6D2871B50900D66CE2 /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F6C2871B50900D66CE2 /* UIControl+Combine.swift */; };
 		049A7F7228730D5400D66CE2 /* UIAlertController+AddToFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F7128730D5400D66CE2 /* UIAlertController+AddToFavorite.swift */; };
 		049A7F7728738E0A00D66CE2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F7628738E0A00D66CE2 /* MainViewController.swift */; };
+		049A7F7A2874A8F800D66CE2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F792874A8F800D66CE2 /* Album.swift */; };
 		350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A882863BEDD00970C8B /* AppDelegate.swift */; };
 		350E1A8B2863BEDD00970C8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */; };
 		350E1A922863BEE200970C8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350E1A912863BEE200970C8B /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		049A7F6C2871B50900D66CE2 /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
 		049A7F7128730D5400D66CE2 /* UIAlertController+AddToFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+AddToFavorite.swift"; sourceTree = "<group>"; };
 		049A7F7628738E0A00D66CE2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		049A7F792874A8F800D66CE2 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		350E1A852863BEDD00970C8B /* iOSArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		350E1A882863BEDD00970C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +264,14 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		049A7F782874A8E600D66CE2 /* album */ = {
+			isa = PBXGroup;
+			children = (
+				049A7F792874A8F800D66CE2 /* Album.swift */,
+			);
+			path = album;
+			sourceTree = "<group>";
+		};
 		350E1A7C2863BEDD00970C8B = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +337,7 @@
 		350E1AA02863BF9400970C8B /* model */ = {
 			isa = PBXGroup;
 			children = (
+				049A7F782874A8E600D66CE2 /* album */,
 				350E1AA12863BF9900970C8B /* song */,
 			);
 			path = model;
@@ -455,6 +466,7 @@
 				048D2ED2286DAE1F0072A0C4 /* SignInViewModel.swift in Sources */,
 				350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */,
 				048D2EB5286C52140072A0C4 /* MusicNetworkManager.swift in Sources */,
+				049A7F7A2874A8F800D66CE2 /* Album.swift in Sources */,
 				049A7F6B2870D00400D66CE2 /* FavoriteSongsDependencyContainer.swift in Sources */,
 				049A7F69287093F800D66CE2 /* StorableSong.swift in Sources */,
 				049A7F5D286F6ADD00D66CE2 /* FavoriteSongViewModel.swift in Sources */,
