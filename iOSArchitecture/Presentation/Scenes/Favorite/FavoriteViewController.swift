@@ -22,6 +22,17 @@ class FavoriteViewController: UITableViewController {
 
     private let rowHeight: CGFloat = 80.0
 
+    // MARK: - Properties
+
+    private lazy var logoutBarButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem()
+        barButton.title = "Logout"
+        barButton.tintColor = #colorLiteral(red: 0.1137254902, green: 0.7254901961, blue: 0.3294117647, alpha: 1)
+        barButton.target = self
+        barButton.action = #selector(self.logout)
+        return barButton
+    }()
+
     // MARK: - Initializer
 
     convenience init(viewModel: FavoriteSongViewModel) {
@@ -58,10 +69,19 @@ class FavoriteViewController: UITableViewController {
 
     private func setupNavigation() {
         navigationItem.title = "Favorites"
+        navigationItem.rightBarButtonItem = logoutBarButton
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .systemBackground
         navigationController?.navigationBar.isTranslucent = true
+    }
+
+    // MARK: - Logout
+
+    @objc func logout() {
+        dismiss(animated: true) { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     // MARK: - Datasource
@@ -92,5 +112,20 @@ class FavoriteViewController: UITableViewController {
         }
         let favoriteSong = viewModel.songResults[indexPath.row]
         cell.configureCell(with: favoriteSong)
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(
+            style: .destructive,
+            title: nil) { [weak self] (_, _, _) in
+                if let selectedFavoriteSong = self?.viewModel.songResults[indexPath.row] {
+                    self?.viewModel.delete(selectedFavoriteSong)
+                }
+            }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = .systemRed
+        let config = UISwipeActionsConfiguration(actions: [deleteAction])
+        config.performsFirstActionWithFullSwipe = true
+        return config
     }
 }

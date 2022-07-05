@@ -26,7 +26,6 @@ final class AppDependencyContainer {
     // MARK: - Navigation
 
     private func makeNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
-
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.backgroundColor = .systemBackground
@@ -54,13 +53,10 @@ final class AppDependencyContainer {
     }
 
     private func makeHomeScene() -> UITabBarController {
-
         let searchFlow = makeSearchFlow()
         let favoriteFlow = makeFavoriteFlow()
 
-        let homeViewController = UITabBarController()
-        homeViewController.modalPresentationStyle = .fullScreen
-        homeViewController.modalTransitionStyle = .crossDissolve
+        let homeViewController = MainViewController()
         homeViewController.viewControllers = [searchFlow, favoriteFlow]
         
         return homeViewController
