@@ -171,6 +171,10 @@ extension SearchViewController: UITableViewDelegate {
 // MARK: - TableView DataSource
 
 extension SearchViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.albumResults.isEmpty ? 1 : 2
+    }
+
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
