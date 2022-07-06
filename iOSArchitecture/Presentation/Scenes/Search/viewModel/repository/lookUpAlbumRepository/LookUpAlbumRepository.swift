@@ -17,7 +17,8 @@ class LookUpAlbumRepository: LookUpRepository {
 
     // MARK: - Initializers
 
-    init(lookUpAlbumRequest: LookUpAlbumRequest, lookUpAlbumNetworkManager: LookUpAlbumNetworkManager) {
+    init(lookUpAlbumRequest: LookUpAlbumRequest,
+         lookUpAlbumNetworkManager: LookUpAlbumNetworkManager) {
         self.lookUpAlbumRequest = lookUpAlbumRequest
         self.lookUpAlbumNetworkManager = lookUpAlbumNetworkManager
     }

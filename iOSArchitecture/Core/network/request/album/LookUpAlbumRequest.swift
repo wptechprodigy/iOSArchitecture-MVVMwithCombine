@@ -15,9 +15,9 @@ class LookUpAlbumRequest: RequestProtocol {
     var path: String {
         return "/lookup"
     }
-    var parameters: [String : Any] {
+    var parameters: [String : String] {
         return [
-            "id": artistID,
+            "id": "\(artistID)",
             "entity": "album"
         ]
     }
