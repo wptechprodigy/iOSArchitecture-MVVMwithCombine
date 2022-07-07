@@ -3,10 +3,9 @@ Mini Spotify - examining MVVM architecture using the Combine Framework and the R
 
 ## My Solution
 
-I have completed 3 out of the 4 deliverables.
+I have completed the 4 compulsory deliverables with a catch...
 
-I am working on the fourth deliverable at the point of wtiting this part of the README,
-and will update it when I complete the the last deliverable before deadline.
+The `Songs` section comes before the `Albums`, which is meant to be the other way around.
 
 Thank you.
 
