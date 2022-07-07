@@ -32,4 +32,19 @@ extension UIAlertController {
 
         return alert
     }
+
+    /// Returns an alert
+    /// - Parameter title: Alert title
+    /// - Returns: A message alert
+    static func alert(_ title: String? = nil, with message: String) -> UIAlertController {
+        let alertAction = UIAlertAction(title: "OK", style: .cancel)
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert)
+
+        alert.addAction(alertAction)
+
+        return alert
+    }
 }
