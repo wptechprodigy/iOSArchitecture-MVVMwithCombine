@@ -9,11 +9,11 @@ import UIKit
 
 class FavoriteCell: UITableViewCell {
 
-    // MARK: - Reuse identifier
-
-    static var reuseIdentifier: String {
-        return String(describing: self)
-    }
+//    // MARK: - Reuse identifier
+//
+//    static var reuseIdentifier: String {
+//        return String(describing: self)
+//    }
 
     // MARK: - UI Elements
 
