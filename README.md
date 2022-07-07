@@ -11,10 +11,11 @@ Thank you.
 
 ## Dark Mode
 
-<img src="https://user-images.githubusercontent.com/22558674/177774367-6f4fe870-3d14-42ee-890b-b66d8a67e8e4.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774389-0a19125d-48c2-450f-9088-1516c86f3dd7.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774391-096e2b92-3a41-4757-bbf3-eadee6d6ca16.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774401-841ae004-e499-48ed-b9fe-177baa83bdd6.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774407-7766f402-9e8a-42ed-be9d-ad4b6031114c.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774410-bf54313c-e08f-4df0-8d99-c2f8f5c64f77.png" width="250">
+<img src="https://user-images.githubusercontent.com/22558674/177774367-6f4fe870-3d14-42ee-890b-b66d8a67e8e4.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774389-0a19125d-48c2-450f-9088-1516c86f3dd7.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774391-096e2b92-3a41-4757-bbf3-eadee6d6ca16.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774401-841ae004-e499-48ed-b9fe-177baa83bdd6.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774407-7766f402-9e8a-42ed-be9d-ad4b6031114c.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774410-bf54313c-e08f-4df0-8d99-c2f8f5c64f77.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177798383-abb7c770-061c-468d-8c39-413e119e5017.png" width="250">
 
 ## Light Mode
 
+<img src="https://user-images.githubusercontent.com/22558674/177798529-9601287c-be38-4ea8-a54f-c01ab9a3b051.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177798534-dd8ef97b-cccd-4f3b-910e-6490e320ad9a.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177798542-2b50283a-e7ac-40ce-a9fa-c3220e55351c.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177798551-4225ac89-20c9-48a1-b8a5-d33fefd6ff31.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177798562-d9000744-d3dc-4a8b-89d8-49de33c30b18.png" width="250">
 
 This README file contains the instructions to complete the challenge for the iOS Architecture Bootcamp.
 
