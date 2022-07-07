@@ -27,7 +27,10 @@ class SearchSongViewModel {
     
     // MARK: - Initializer
 
-    init(musicSearchRepository: MusicSearchRepository, lookUpAlbumRepository: LookUpAlbumRepository) {
+    init(
+        musicSearchRepository: MusicSearchRepository,
+        lookUpAlbumRepository: LookUpAlbumRepository
+    ) {
         self.musicSearchRepository = musicSearchRepository
         self.lookUpAlbumRepository = lookUpAlbumRepository
     }

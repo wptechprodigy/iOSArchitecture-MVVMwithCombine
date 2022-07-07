@@ -17,12 +17,12 @@ class SearchViewController: UIViewController {
 
     // MARK: - Dependencies
 
-    private var viewModel: SearchSongViewModel!
-    private var playerViewController = AVPlayerViewController ()
+    internal private(set) var viewModel: SearchSongViewModel!
+    internal var playerViewController = AVPlayerViewController ()
 
     // MARK: - Constants
 
-    private let rowHeight: CGFloat = 70.0
+    internal let rowHeight: CGFloat = 70.0
 
     // MARK: - Properties
 
@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
         return tableView
     }()
 
-    private lazy var searchController: UISearchController = {
+    internal lazy var searchController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search by song or artist"
@@ -80,6 +80,19 @@ class SearchViewController: UIViewController {
         tableView.register(AlbumCell.self,
                            forCellReuseIdentifier: AlbumCell.reuseIdentifier)
 
+        listenToSongResults()
+        listenToAlbumResults()
+        viewModel.start()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+
+    // MARK: - Observer
+
+    private func listenToSongResults() {
         viewModel
             .$songResults
             .receive(on: DispatchQueue.main)
@@ -87,7 +100,9 @@ class SearchViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &subscriptions)
+    }
 
+    private func listenToAlbumResults() {
         viewModel
             .$albumResults
             .receive(on: DispatchQueue.main)
@@ -95,13 +110,6 @@ class SearchViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &subscriptions)
-
-        viewModel.start()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        tableView.frame = view.bounds
     }
 
     // MARK: - Navigation Items
@@ -118,134 +126,5 @@ class SearchViewController: UIViewController {
         dismiss(animated: true) { [weak self] in
             self?.navigationController?.popToRootViewController(animated: true)
         }
-    }
-
-    // MARK: - Play Song
-
-    private func playDownload(_ song: Song) {
-        present(playerViewController, animated: true) { [weak playerViewController] in
-            if let url = URL(string: song.previewUrl) {
-                playerViewController?.player = AVPlayer(url: url)
-                playerViewController?.player?.play()
-            }
-        }
-    }
-}
-
-// MARK: - TableView Delegate
-
-extension SearchViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        willDisplay cell: UITableViewCell,
-        forRowAt indexPath: IndexPath
-    ) {
-        if viewModel.sections[indexPath.section].title == "Albums" {
-            guard let albumCell = cell as? AlbumCell else {
-                print("Error trying to display a custom cell")
-                return
-            }
-
-            if let data = viewModel.sections[indexPath.section][indexPath.row] as? Album {
-                albumCell.configure(with: data)
-            }
-
-        } else {
-            guard let songCell = cell as? SongCell else {
-                print("Error trying to display a custom cell")
-                return
-            }
-
-            if let data = viewModel.sections[indexPath.section][indexPath.row] as? Song {
-                songCell.configureUI(with: data)
-            }
-            songCell.didTapMoreButton = { [weak self] song in
-                let alert = UIAlertController.presentOptions(song) { [weak self] song in
-                    self?.addToFavorites(song)
-                }
-
-                self?.present(alert, animated: true)
-            }
-        }
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            switch viewModel.sections[indexPath.section].title {
-                case "Albums":
-                    let alert = UIAlertController.alert(with: "Working with mvvm is great!")
-                    present(alert, animated: true)
-                case "Songs":
-                    if let song = viewModel.sections[indexPath.section][indexPath.row] as? Song {
-                        playDownload(song)
-                    }
-                default: break
-            }
-        }
-
-    private func addToFavorites(_ song: Song) {
-        let favoriteViewModel: FavoriteSongViewModel = FavoriteSongsDependencyContainer().makeFavoriteSongViewModel()
-        favoriteViewModel.add(song)
-    }
-}
-
-// MARK: - TableView DataSource
-
-extension SearchViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.sections.count
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        return viewModel.sections[section].numberOfItems
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-
-        if viewModel.sections[indexPath.section].title == "Albums" {
-            return tableView
-                .dequeueReusableCell(
-                    withIdentifier: AlbumCell.reuseIdentifier,
-                    for: indexPath)
-        } else {
-            return tableView
-                .dequeueReusableCell(
-                    withIdentifier: SongCell.reuseIdentifier,
-                    for: indexPath)
-        }
-    }
-
-    func tableView(_ tableView: UITableView,
-                   titleForHeaderInSection section: Int) -> String? {
-        return viewModel.sections[section].title
-    }
-}
-
-// MARK: - Search Delegate
-
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchTerm = searchBar.text {
-            searchController.dismiss(animated: true)
-            viewModel.songInput = searchTerm
-        }
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.songInput =  ""
     }
 }
