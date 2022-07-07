@@ -10,8 +10,10 @@ import AVKit
 
 extension SearchViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
         return rowHeight
     }
 
@@ -20,38 +22,19 @@ extension SearchViewController: UITableViewDelegate {
         willDisplay cell: UITableViewCell,
         forRowAt indexPath: IndexPath
     ) {
-        if viewModel.sections[indexPath.section].title == "Albums" {
-            guard let albumCell = cell as? AlbumCell else {
-                print("Error trying to display a custom cell")
-                return
-            }
-
-            if let data = viewModel.sections[indexPath.section][indexPath.row] as? Album {
-                albumCell.configure(with: data)
-            }
-
-        } else {
-            guard let songCell = cell as? SongCell else {
-                print("Error trying to display a custom cell")
-                return
-            }
-
-            if let data = viewModel.sections[indexPath.section][indexPath.row] as? Song {
-                songCell.configureUI(with: data)
-            }
-            songCell.didTapMoreButton = { [weak self] song in
-                let alert = UIAlertController.presentOptions(song) { [weak self] song in
-                    self?.addToFavorites(song)
-                }
-
-                self?.present(alert, animated: true)
-            }
+        switch viewModel.sections[indexPath.section].title {
+            case "Albums":
+                self.displayAlbumCells(cell, for: indexPath)
+            case "Songs":
+                self.displaySongCells(cell, for: indexPath)
+            default: break
         }
     }
 
     func tableView(
         _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
+        didSelectRowAt indexPath: IndexPath
+    ) {
             tableView.deselectRow(at: indexPath, animated: true)
             switch viewModel.sections[indexPath.section].title {
                 case "Albums":
@@ -80,5 +63,35 @@ extension SearchViewController: UITableViewDelegate {
             }
         }
     }
-}
 
+    // MARK: - Display Cell
+
+    private func displayAlbumCells(_ cell: UITableViewCell, for indexPath: IndexPath) {
+        guard let albumCell = cell as? AlbumCell else {
+            print("Error trying to display a custom cell")
+            return
+        }
+
+        if let data = viewModel.sections[indexPath.section][indexPath.row] as? Album {
+            albumCell.configure(with: data)
+        }
+    }
+
+    private func displaySongCells(_ cell: UITableViewCell, for indexPath: IndexPath) {
+        guard let songCell = cell as? SongCell else {
+            print("Error trying to display a custom cell")
+            return
+        }
+
+        if let data = viewModel.sections[indexPath.section][indexPath.row] as? Song {
+            songCell.configureUI(with: data)
+        }
+        songCell.didTapMoreButton = { [weak self] song in
+            let alert = UIAlertController.presentOptions(song) { [weak self] song in
+                self?.addToFavorites(song)
+            }
+
+            self?.present(alert, animated: true)
+        }
+    }
+}
