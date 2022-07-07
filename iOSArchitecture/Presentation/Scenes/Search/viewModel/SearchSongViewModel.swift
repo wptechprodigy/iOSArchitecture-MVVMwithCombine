@@ -21,6 +21,10 @@ class SearchSongViewModel {
     @Published public private(set) var songResults: [Song] = []
     @Published public private(set) var albumResults: [Album] = []
 
+    // MARK: - Sections
+
+    public private(set) var sections: [Section] = []
+    
     // MARK: - Initializer
 
     init(musicSearchRepository: MusicSearchRepository, lookUpAlbumRepository: LookUpAlbumRepository) {
@@ -37,6 +41,7 @@ class SearchSongViewModel {
     // MARK: - Songs
 
     private func searchForSong(_ song: String) {
+        sections.removeAll()
         musicSearchRepository
             .search(song)
             .sink(
@@ -63,11 +68,13 @@ class SearchSongViewModel {
     private func lookupAlbum(_ songID: Int) {
         lookUpAlbumRepository
             .lookup(songID)
-            .print()
             .sink(
                 receiveCompletion: { _ in },
                 receiveValue: { [weak self] albumList in
-                    self?.updateAlbumResult(albumList.results)
+                    
+                    if let expectedList = self?.grabFiveAlbums(albumList.results) {
+                        self?.updateAlbumResult(expectedList)
+                    }
                 })
             .store(in: &subscriptions)
     }
@@ -76,10 +83,17 @@ class SearchSongViewModel {
 
     private func updateSongResult(_ songResults: [Song]) {
         self.songResults = songResults
+        self.updateSections(with: songResults, for: "Songs")
     }
 
     private func updateAlbumResult(_ albumResults: [Album]) {
         self.albumResults = albumResults
+        self.updateSections(with: albumResults, for: "Albums")
+    }
+
+    private func updateSections(with data: [DataProtocol], for title: String) {
+        let section = Section(title: title, data: data)
+        self.sections.append(section)
     }
 
     // MARK: - Artist or Song
@@ -102,5 +116,22 @@ class SearchSongViewModel {
         }
 
         return numberFound == numberWantedChecks
+    }
+
+    private func grabFiveAlbums(_ result: [Album]) -> [Album] {
+        var numberRequired = [Album]()
+        let numberNeeded = 6
+        var count = 0
+
+        while count < numberNeeded {
+            if result.isEmpty {
+                break
+            }
+            numberRequired.append(result[count])
+            count += 1
+        }
+
+        numberRequired.removeFirst()
+        return numberRequired
     }
 }
