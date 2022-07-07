@@ -9,6 +9,12 @@ The `Songs` section comes before the `Albums`, which is meant to be the other wa
 
 Thank you.
 
+## Dark Mode
+
+<img src="https://user-images.githubusercontent.com/22558674/177774367-6f4fe870-3d14-42ee-890b-b66d8a67e8e4.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774389-0a19125d-48c2-450f-9088-1516c86f3dd7.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774391-096e2b92-3a41-4757-bbf3-eadee6d6ca16.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774401-841ae004-e499-48ed-b9fe-177baa83bdd6.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774407-7766f402-9e8a-42ed-be9d-ad4b6031114c.png" width="250"> <img src="https://user-images.githubusercontent.com/22558674/177774410-bf54313c-e08f-4df0-8d99-c2f8f5c64f77.png" width="250">
+
+## Light Mode
+
 
 This README file contains the instructions to complete the challenge for the iOS Architecture Bootcamp.
 
