@@ -23,17 +23,18 @@ extension SearchViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-
-        if viewModel.sections[indexPath.section].title == "Albums" {
-            return tableView
-                .dequeueReusableCell(
-                    withIdentifier: AlbumCell.reuseIdentifier,
-                    for: indexPath)
-        } else {
-            return tableView
-                .dequeueReusableCell(
-                    withIdentifier: SongCell.reuseIdentifier,
-                    for: indexPath)
+        switch viewModel.sections[indexPath.section].title {
+            case "Albums":
+                return tableView
+                    .dequeueReusableCell(
+                        withIdentifier: AlbumCell.reuseIdentifier,
+                        for: indexPath)
+            case "Songs":
+                return tableView
+                    .dequeueReusableCell(
+                        withIdentifier: SongCell.reuseIdentifier,
+                        for: indexPath)
+            default: return UITableViewCell()
         }
     }
 
