@@ -10,6 +10,8 @@ import Combine
 
 final class SongCell: UITableViewCell {
 
+    // MARK: - Properties
+    
     var didTapMoreButton: ((Song) -> Void)?
     private var song: Song?
 
