@@ -42,6 +42,10 @@
 		049A7F7F2874BD6100D66CE2 /* LookUpAlbumNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F7E2874BD6100D66CE2 /* LookUpAlbumNetworkManager.swift */; };
 		049A7F832874BE5200D66CE2 /* LookUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F822874BE5200D66CE2 /* LookUpRepository.swift */; };
 		049A7F852874BECF00D66CE2 /* LookUpAlbumRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F842874BECF00D66CE2 /* LookUpAlbumRepository.swift */; };
+		049A7F872875A82100D66CE2 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F862875A82100D66CE2 /* AlbumCell.swift */; };
+		049A7F892875A85B00D66CE2 /* UIView+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F882875A85B00D66CE2 /* UIView+ReuseIdentifier.swift */; };
+		049A7F8C2875BE1200D66CE2 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F8B2875BE1200D66CE2 /* Section.swift */; };
+		049A7F8E2875BED600D66CE2 /* DataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049A7F8D2875BED600D66CE2 /* DataProtocol.swift */; };
 		350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A882863BEDD00970C8B /* AppDelegate.swift */; };
 		350E1A8B2863BEDD00970C8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */; };
 		350E1A922863BEE200970C8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350E1A912863BEE200970C8B /* Assets.xcassets */; };
@@ -84,6 +88,10 @@
 		049A7F7E2874BD6100D66CE2 /* LookUpAlbumNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookUpAlbumNetworkManager.swift; sourceTree = "<group>"; };
 		049A7F822874BE5200D66CE2 /* LookUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookUpRepository.swift; sourceTree = "<group>"; };
 		049A7F842874BECF00D66CE2 /* LookUpAlbumRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookUpAlbumRepository.swift; sourceTree = "<group>"; };
+		049A7F862875A82100D66CE2 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		049A7F882875A85B00D66CE2 /* UIView+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ReuseIdentifier.swift"; sourceTree = "<group>"; };
+		049A7F8B2875BE1200D66CE2 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		049A7F8D2875BED600D66CE2 /* DataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtocol.swift; sourceTree = "<group>"; };
 		350E1A852863BEDD00970C8B /* iOSArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		350E1A882863BEDD00970C8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		350E1A8A2863BEDD00970C8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 				048D2ECE286D9FA80072A0C4 /* UIViewController+HideKeyboard.swift */,
 				049A7F6C2871B50900D66CE2 /* UIControl+Combine.swift */,
 				049A7F7128730D5400D66CE2 /* UIAlertController+AddToFavorite.swift */,
+				049A7F882875A85B00D66CE2 /* UIView+ReuseIdentifier.swift */,
 			);
 			path = "UIKit Extensions";
 			sourceTree = "<group>";
@@ -375,6 +384,8 @@
 			children = (
 				049A7F782874A8E600D66CE2 /* album */,
 				350E1AA12863BF9900970C8B /* song */,
+				049A7F8B2875BE1200D66CE2 /* Section.swift */,
+				049A7F8D2875BED600D66CE2 /* DataProtocol.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 			children = (
 				350E1AA72863C03300970C8B /* SearchViewController.swift */,
 				048D2EC5286CC43C0072A0C4 /* SongCell.swift */,
+				049A7F862875A82100D66CE2 /* AlbumCell.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";
@@ -499,6 +511,7 @@
 				049A7F56286E688600D66CE2 /* FavoriteCell.swift in Sources */,
 				048D2EBD286C73220072A0C4 /* MusicSearchRepository.swift in Sources */,
 				350E1AA32863BFAF00970C8B /* Song.swift in Sources */,
+				049A7F8C2875BE1200D66CE2 /* Section.swift in Sources */,
 				048D2ED2286DAE1F0072A0C4 /* SignInViewModel.swift in Sources */,
 				350E1A892863BEDD00970C8B /* AppDelegate.swift in Sources */,
 				049A7F852874BECF00D66CE2 /* LookUpAlbumRepository.swift in Sources */,
@@ -511,15 +524,18 @@
 				350E1AA82863C03300970C8B /* SearchViewController.swift in Sources */,
 				048D2EC9286D7A230072A0C4 /* SignInRootView.swift in Sources */,
 				049A7F6D2871B50900D66CE2 /* UIControl+Combine.swift in Sources */,
+				049A7F872875A82100D66CE2 /* AlbumCell.swift in Sources */,
 				048D2ED5286DC8630072A0C4 /* SignInDependencyContainer.swift in Sources */,
 				049A7F7228730D5400D66CE2 /* UIAlertController+AddToFavorite.swift in Sources */,
 				048D2ECC286D96B40072A0C4 /* SignInViewController.swift in Sources */,
+				049A7F8E2875BED600D66CE2 /* DataProtocol.swift in Sources */,
 				048D2ED8286DC87F0072A0C4 /* SearchDependencyContainer.swift in Sources */,
 				048D2EB1286BE2430072A0C4 /* NetworkError.swift in Sources */,
 				048D2ECF286D9FA80072A0C4 /* UIViewController+HideKeyboard.swift in Sources */,
 				350E1A8B2863BEDD00970C8B /* SceneDelegate.swift in Sources */,
 				049A7F7F2874BD6100D66CE2 /* LookUpAlbumNetworkManager.swift in Sources */,
 				048D2EAF286BE05A0072A0C4 /* RequestProtocol.swift in Sources */,
+				049A7F892875A85B00D66CE2 /* UIView+ReuseIdentifier.swift in Sources */,
 				048D2EBB286C72080072A0C4 /* SearchRepository.swift in Sources */,
 				049A7F7728738E0A00D66CE2 /* MainViewController.swift in Sources */,
 				049A7F832874BE5200D66CE2 /* LookUpRepository.swift in Sources */,

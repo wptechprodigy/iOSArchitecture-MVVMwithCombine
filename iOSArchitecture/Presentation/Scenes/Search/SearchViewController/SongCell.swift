@@ -10,16 +10,6 @@ import Combine
 
 final class SongCell: UITableViewCell {
 
-    // MARK: - Reuse identifier
-
-    static var reuseIdentifier: String {
-        return String(describing: self)
-    }
-
-    // MARK: - Subscriptions
-
-    private var subscriptions = Set<AnyCancellable>()
-
     var didTapMoreButton: ((Song) -> Void)?
     private var song: Song?
 

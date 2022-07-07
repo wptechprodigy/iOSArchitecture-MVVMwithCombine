@@ -12,8 +12,8 @@ struct AlbumList: Decodable {
 }
 
 // MARK: - Result
-struct Album: Decodable {
-    let artist: String
+struct Album: Decodable, DataProtocol {
+    var artist: String
     let name: String?
     let artworkUrl: String?
     let numberOfTracks: Int?

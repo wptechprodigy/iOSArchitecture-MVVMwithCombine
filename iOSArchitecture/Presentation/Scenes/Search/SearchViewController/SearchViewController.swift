@@ -77,9 +77,19 @@ class SearchViewController: UIViewController {
         view.addSubview(tableView)
         tableView.register(SongCell.self,
                            forCellReuseIdentifier: SongCell.reuseIdentifier)
+        tableView.register(AlbumCell.self,
+                           forCellReuseIdentifier: AlbumCell.reuseIdentifier)
 
         viewModel
             .$songResults
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &subscriptions)
+
+        viewModel
+            .$albumResults
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
@@ -136,20 +146,32 @@ extension SearchViewController: UITableViewDelegate {
         willDisplay cell: UITableViewCell,
         forRowAt indexPath: IndexPath
     ) {
-        guard
-            let songCell = cell as? SongCell
-        else {
-            print("Error trying to display a custom cell")
-            return
-        }
-        let song = viewModel.songResults[indexPath.row]
-        songCell.configureUI(with: song)
-        songCell.didTapMoreButton = { [weak self] song in
-            let alert = UIAlertController.presentOptions(song) { [weak self] song in
-                self?.addToFavorites(song)
+        if viewModel.sections[indexPath.section].title == "Albums" {
+            guard let albumCell = cell as? AlbumCell else {
+                print("Error trying to display a custom cell")
+                return
             }
 
-            self?.present(alert, animated: true)
+            if let data = viewModel.sections[indexPath.section][indexPath.row] as? Album {
+                albumCell.configure(with: data)
+            }
+
+        } else {
+            guard let songCell = cell as? SongCell else {
+                print("Error trying to display a custom cell")
+                return
+            }
+
+            if let data = viewModel.sections[indexPath.section][indexPath.row] as? Song {
+                songCell.configureUI(with: data)
+            }
+            songCell.didTapMoreButton = { [weak self] song in
+                let alert = UIAlertController.presentOptions(song) { [weak self] song in
+                    self?.addToFavorites(song)
+                }
+
+                self?.present(alert, animated: true)
+            }
         }
     }
 
@@ -157,9 +179,16 @@ extension SearchViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
-            let song = viewModel.songResults[indexPath.row]
-            
-            playDownload(song)
+            switch viewModel.sections[indexPath.section].title {
+                case "Albums":
+                    let alert = UIAlertController.alert(with: "Working with mvvm is great!")
+                    present(alert, animated: true)
+                case "Songs":
+                    if let song = viewModel.sections[indexPath.section][indexPath.row] as? Song {
+                        playDownload(song)
+                    }
+                default: break
+            }
         }
 
     private func addToFavorites(_ song: Song) {
@@ -172,24 +201,37 @@ extension SearchViewController: UITableViewDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.albumResults.isEmpty ? 1 : 2
+        return viewModel.sections.count
     }
 
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return viewModel.songResults.count
+        return viewModel.sections[section].numberOfItems
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return tableView
-            .dequeueReusableCell(
-                withIdentifier: SongCell.reuseIdentifier,
-                for: indexPath)
+
+        if viewModel.sections[indexPath.section].title == "Albums" {
+            return tableView
+                .dequeueReusableCell(
+                    withIdentifier: AlbumCell.reuseIdentifier,
+                    for: indexPath)
+        } else {
+            return tableView
+                .dequeueReusableCell(
+                    withIdentifier: SongCell.reuseIdentifier,
+                    for: indexPath)
+        }
+    }
+
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
+        return viewModel.sections[section].title
     }
 }
 

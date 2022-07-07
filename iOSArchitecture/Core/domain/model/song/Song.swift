@@ -11,10 +11,10 @@ struct SongList: Decodable {
     let results: [Song]
 }
 
-struct Song: Decodable, Hashable {
+struct Song: Decodable, Hashable, DataProtocol {
     let name: String
     let songID: Int
-    let artist: String
+    var artist: String
     let previewUrl: String
     
     init(

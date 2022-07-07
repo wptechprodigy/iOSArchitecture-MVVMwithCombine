@@ -1,19 +1,13 @@
 //
-//  FavoriteCell.swift
+//  AlbumCell.swift
 //  iOSArchitecture
 //
-//  Created by waheedCodes on 01/07/2022.
+//  Created by waheedCodes on 06/07/2022.
 //
 
 import UIKit
 
-class FavoriteCell: UITableViewCell {
-
-//    // MARK: - Reuse identifier
-//
-//    static var reuseIdentifier: String {
-//        return String(describing: self)
-//    }
+final class AlbumCell: UITableViewCell {
 
     // MARK: - UI Elements
 
@@ -21,7 +15,6 @@ class FavoriteCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .label
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,28 +38,42 @@ class FavoriteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup UI
+    // MARK: - Setup UI Elements
 
     private func setupUI() {
         contentView.backgroundColor = .systemBackground
+
         [nameLabel, artistLabel]
             .forEach { contentView.addSubview($0) }
+        layoutElements()
+    }
 
+    private func layoutElements() {
+        activateConstraintNameLabel()
+        activateConstraintArtistLabel()
+    }
+
+    // MARK: - Configure Cell
+
+    func configure(with album: Album) {
+        nameLabel.text = album.name
+        artistLabel.text = album.artist
+    }
+}
+
+extension AlbumCell {
+
+    private func activateConstraintNameLabel() {
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            artistLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            artistLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
-            artistLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-            artistLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
         ])
     }
 
-    // MARK: - Configure
-
-    func configureCell(with song: Song) {
-        nameLabel.text = song.name
-        artistLabel.text = song.artist
+    private func activateConstraintArtistLabel() {
+        NSLayoutConstraint.activate([
+            artistLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            artistLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor)
+        ])
     }
 }
