@@ -9,12 +9,6 @@ import UIKit
 
 class FavoriteCell: UITableViewCell {
 
-//    // MARK: - Reuse identifier
-//
-//    static var reuseIdentifier: String {
-//        return String(describing: self)
-//    }
-
     // MARK: - UI Elements
 
     private let nameLabel: UILabel = {
